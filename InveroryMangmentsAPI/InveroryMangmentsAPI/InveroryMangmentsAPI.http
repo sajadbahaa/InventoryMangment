@@ -1,0 +1,6 @@
+@InveroryMangmentsAPI_HostAddress = http://localhost:5143
+
+GET {{InveroryMangmentsAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
