@@ -1,4 +1,5 @@
 ﻿using DataLayer.Data;
+using DataLayer.Exceptions;
 using DataLayer.Interfaces;
 using DataLayer.Interfaces.IRepository;
 using DataLayer.Repositories;
@@ -23,12 +24,31 @@ namespace DataLayer.UnitOfWork
         }
         public async Task<int> SaveChangesAsync()
         {
-            return await _dbContext.SaveChangesAsync();
-        }
+            try 
+            {
+                return await _dbContext.SaveChangesAsync();
 
+            }
+            catch (DbUpdateException ex) 
+            {
+                throw DbExceptions.Map(ex);
+            }
+                    }
         public void Dispose()
         {
             _dbContext.Dispose();
+        }
+
+        public async Task<bool> CommitAsync()
+        {
+            try
+            {
+                return await SaveChangesAsync() > 0;
+            }
+            catch (DbUpdateException ex)
+            {
+                throw DbExceptions.Map(ex);
+            }
         }
     }
 }

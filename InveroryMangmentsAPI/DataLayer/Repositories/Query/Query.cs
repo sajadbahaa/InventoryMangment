@@ -17,7 +17,13 @@ namespace DataLayer.Repositories.Query
         {
             _dbSet = context.Set<T>();
         }
-     public  IQueryable<T> QueryCustom(Expression<Func<T, bool>> predicate,bool AsNoTracking =false)
+
+        public IQueryable<T> Pagination(int pageNumber, int pageSize)
+        {
+        return _dbSet.Skip((pageNumber - 1) * pageSize).Take(pageSize);
+        }
+
+        public  IQueryable<T> QueryCustom(Expression<Func<T, bool>> predicate,bool AsNoTracking =false)
         {
             if (AsNoTracking)
             {

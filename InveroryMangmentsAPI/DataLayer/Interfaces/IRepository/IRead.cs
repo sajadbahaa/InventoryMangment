@@ -10,6 +10,6 @@ namespace DataLayer.Interfaces.UnitOfWork
     public interface IRead<T> where T:class
     {
         public IQueryable<T> QueryCustom(Expression<Func<T, bool>> predicate,bool AsNoTracking = false);
-
+        public IQueryable<T> Pagination(int pageNumber, int pageSize);
     }
 }

@@ -16,19 +16,18 @@ namespace DataLayer.Repositories
     public class CategoryRepository : Query<Category>, ICategoryRepo
     {
         private readonly AppDbContext _context;
-        public CategoryRepository(AppDbContext context) 
-:base(context)        {
-            
+        public CategoryRepository(AppDbContext context) :base(context)        
+        {
             _context = context;
         }
-        public async Task AddAsync(Category entity)
+        public void Add(Category entity)
         {
-            await _context.Categories.AddAsync(entity);
+            _context.Categories.Add(entity);
         }
 
-        public void Delete(Category entity)
+        public async Task<bool> DeleteAsync<T>(short id)
         {
-            _context.Categories.Remove(entity);
+            return await _context.Categories.Where(x => x.Id == id).ExecuteDeleteAsync() > 0;
         }
 
         public void Update(Category entity)

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Interfaces.IRepository
 {
-    public  interface ICategoryRepo : IAdd<Category>, IUpdate<Category>, IDelete<Category>
+    public  interface ICategoryRepo  : IAdd<Category>, IUpdate<Category>, IRead<Category>,IDeleteExtension<short>
     {
     }
 }

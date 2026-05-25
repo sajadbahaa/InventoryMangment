@@ -12,5 +12,6 @@ namespace DataLayer.Interfaces
     {
         ICategoryRepo CategoryRepository { get; }
         Task<int> SaveChangesAsync();
+        Task<bool>CommitAsync();
     }
 }

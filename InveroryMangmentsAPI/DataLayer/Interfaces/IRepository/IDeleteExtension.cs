@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Interfaces.IRepository
 {
-    public interface IAdd<T> where T:class
+    public  interface IDeleteExtension<Tkey> where Tkey : struct
     {
-       void Add(T entity);
+        Task<bool> DeleteAsync<T>(Tkey id);
     }
 }
