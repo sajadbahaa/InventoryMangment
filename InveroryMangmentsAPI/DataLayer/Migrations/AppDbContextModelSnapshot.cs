@@ -23,11 +23,11 @@ namespace DataLayer.Migrations
 
             modelBuilder.Entity("DataLayer.Entities.Category", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<short>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("smallint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<short>("Id"));
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -35,6 +35,9 @@ namespace DataLayer.Migrations
                         .HasColumnType("nvarchar(70)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
 
                     b.ToTable("Categories");
                 });

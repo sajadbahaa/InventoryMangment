@@ -5,7 +5,7 @@
 namespace DataLayer.Migrations
 {
     /// <inheritdoc />
-    public partial class Init : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -14,7 +14,7 @@ namespace DataLayer.Migrations
                 name: "Categories",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<short>(type: "smallint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(70)", maxLength: 70, nullable: false)
                 },
@@ -22,6 +22,12 @@ namespace DataLayer.Migrations
                 {
                     table.PrimaryKey("PK_Categories", x => x.Id);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Categories_Name",
+                table: "Categories",
+                column: "Name",
+                unique: true);
         }
 
         /// <inheritdoc />

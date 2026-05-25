@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataLayer.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260519124052_Init")]
-    partial class Init
+    [Migration("20260524074153_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,11 +26,11 @@ namespace DataLayer.Migrations
 
             modelBuilder.Entity("DataLayer.Entities.Category", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<short>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("smallint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<short>("Id"));
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -38,6 +38,9 @@ namespace DataLayer.Migrations
                         .HasColumnType("nvarchar(70)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
 
                     b.ToTable("Categories");
                 });
