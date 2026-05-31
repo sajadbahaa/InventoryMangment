@@ -8,7 +8,7 @@ namespace DTOsLayer.Common.Exceptions
 {
     public class NotFoundException : AppException
     {
-        public NotFoundException(string message, int statusCode=400) : base(message, statusCode)
+        public NotFoundException(string message, int statusCode=404) : base(message, statusCode)
         {
 
         }

@@ -6,11 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataLayer.Interfaces
+namespace DataLayer.Interfaces.IUnit
 {
     public  interface IUnitOfWork:IDisposable
     {
         ICategoryRepo CategoryRepository { get; }
+        IProductRepo ProductRepository { get; }
         Task<int> SaveChangesAsync();
         Task<bool>CommitAsync();
     }

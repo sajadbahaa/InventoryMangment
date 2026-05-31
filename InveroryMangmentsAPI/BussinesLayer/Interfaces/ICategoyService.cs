@@ -9,14 +9,12 @@ using System.Threading.Tasks;
 
 namespace BussinesLayer.Interfaces
 {
-    public  interface ICategoyService
+    public  interface ICategoyService:IPagination<GetCategoeyDto>
     {
-     Task<ICollection<GetCategoeyDto>>Pagination(Pagination request);
      Task<GetCategoeyDto> GetCategoryByIdAsync(ApiRequestID request);
      Task<GetCategoeyDto> GetCategoryByNameAsync(ApiRequestString request);
      Task<bool>AddCategoryAsync(DTOsLayer.Categories.Write.AddCategoryDto category);
      Task<bool> UpdateCategoryAsync(DTOsLayer.Categories.Write.UpdateCategoryDto category);
      Task<bool> DeleteCategoryAsync(ApiRequestID request);
-
     }
 }

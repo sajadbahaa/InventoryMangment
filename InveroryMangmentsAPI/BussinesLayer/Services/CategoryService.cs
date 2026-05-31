@@ -3,7 +3,7 @@ using AutoMapper.QueryableExtensions;
 using BussinesLayer.Interfaces;
 using BussinesLayer.Utility;
 using DataLayer.Entities;
-using DataLayer.Interfaces;
+using DataLayer.Interfaces.IUnit;
 using DTOsLayer.Categories.Read;
 using DTOsLayer.Categories.Write;
 using DTOsLayer.Common.Exceptions;
@@ -71,7 +71,12 @@ namespace BussinesLayer.Services
 
         public async Task<bool> UpdateCategoryAsync(UpdateCategoryDto category)
         {
-          _unitOfWork.CategoryRepository.Update(_mapper.Map<DataLayer.Entities.Category>(category));
+        bool isExist = await _unitOfWork.CategoryRepository.AnyAsync(entity=>entity.Id==category.Id);
+            if(!isExist)
+            {
+                throw new NotFoundException("Category not found with id");
+            }
+            _unitOfWork.CategoryRepository.Update(_mapper.Map<DataLayer.Entities.Category>(category));
          return  await _unitOfWork.CommitAsync();
         }
     }

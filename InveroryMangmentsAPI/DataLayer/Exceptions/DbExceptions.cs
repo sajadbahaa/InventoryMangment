@@ -14,7 +14,7 @@ namespace DataLayer.Exceptions
     {
         private static Exception _HandkeForeignKeyConstraints(DbUpdateException ex) 
         {
-             return new ConflictException("Operation violates data relationships"); ;
+             return new BadRequestException("Invalid foreign key"); ;
         }
         private static Exception _HandleUniqeConstrains(DbUpdateException ex)
         {

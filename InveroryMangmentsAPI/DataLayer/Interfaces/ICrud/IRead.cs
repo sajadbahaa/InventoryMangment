@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataLayer.Interfaces.UnitOfWork
+namespace DataLayer.Interfaces.ICrud
 {
     public interface IRead<T> where T:class
     {

@@ -6,12 +6,13 @@ using DTOsLayer.Common.Pagination;
 using DTOsLayer.Common.Request;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Shared.Common.ApiResponse;
 
 namespace InveroryMangmentsAPI.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class CategoryController : ControllerBase
+    public class CategoryController : SuccessApiResponse
     {
         private readonly ICategoyService _categoryService;
         public CategoryController(ICategoyService categoryService) 
@@ -22,19 +23,19 @@ namespace InveroryMangmentsAPI.Controllers
         public async Task<IActionResult> GetCategories([FromQuery]Pagination request)
         {
             var categories = await _categoryService.Pagination(request);
-            return Ok(categories);
+            return OKResponse(categories);
         }
         [HttpGet("query/id")]
          public async Task<IActionResult> GetById([FromQuery] ApiRequestID request) 
         {
             GetCategoeyDto data = await _categoryService.GetCategoryByIdAsync( request);
-            return Ok(data);
+            return OKResponse(data);
         }
         [HttpGet("query/name")]
         public async Task<IActionResult> GetByName([FromQuery] ApiRequestString request)
         {
             var data = await _categoryService.GetCategoryByNameAsync(request);
-            return Ok(data);
+            return OKResponse(data);
         }
 
 
@@ -42,7 +43,7 @@ namespace InveroryMangmentsAPI.Controllers
         public async Task<IActionResult> AddCategory([FromBody] AddCategoryDto category)
         {
             await _categoryService.AddCategoryAsync(category);
-            return NoContent();
+            return NotContentResponse();
         }
 
         [HttpPut("Update")]
@@ -50,13 +51,13 @@ namespace InveroryMangmentsAPI.Controllers
         {
             await _categoryService.UpdateCategoryAsync(category);
             
-            return NoContent();
+            return NotContentResponse();
         }
         [HttpDelete("Delete")]
         public async Task<IActionResult> DeleteCategory([FromQuery] ApiRequestID request)
         {
             await _categoryService.DeleteCategoryAsync(request);
-            return NoContent();
+            return NotContentResponse();
         }
             
     }

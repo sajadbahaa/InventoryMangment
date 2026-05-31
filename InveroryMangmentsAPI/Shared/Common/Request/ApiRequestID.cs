@@ -12,6 +12,6 @@ namespace DTOsLayer.Common.Request
     }
     public class ApiRequestString
     {
-        public string Value { get; set; }
+        public string Value { get; set; } = null!;
     }
 }

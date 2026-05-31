@@ -10,5 +10,6 @@ namespace DataLayer.Entities
     {
         public short Id { get; init; }
         public string Name { get; set; } = null!;
+        public ICollection<Products> Products { get; set; }
     }
 }

@@ -21,5 +21,6 @@ namespace DataLayer.Data
         // DbSets for your entities
 
     public DbSet<Category> Categories { get; set; }
+    public DbSet<Products> Products { get; set; }   
     }
 }

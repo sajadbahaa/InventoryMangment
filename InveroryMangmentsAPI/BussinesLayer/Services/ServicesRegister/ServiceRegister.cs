@@ -15,6 +15,7 @@ namespace BussinesLayer.Services.ServicesRegister
         public static IServiceCollection AddServices(this IServiceCollection services)
         {
             services.AddScoped<ICategoyService, CategoryService>();
+            services.AddScoped<IProductService,ProductService>();
             return services;
         }
     }
