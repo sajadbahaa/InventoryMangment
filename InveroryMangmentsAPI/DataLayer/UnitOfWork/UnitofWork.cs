@@ -1,7 +1,7 @@
 ﻿using DataLayer.Data;
 using DataLayer.Exceptions;
-using DataLayer.Interfaces;
 using DataLayer.Interfaces.IRepository;
+using DataLayer.Interfaces.IUnit;
 using DataLayer.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -17,10 +17,13 @@ namespace DataLayer.UnitOfWork
         readonly AppDbContext _dbContext;
         public ICategoryRepo CategoryRepository { get; }
 
+        public IProductRepo ProductRepository { get; }
+
         public UnitofWork(AppDbContext dbContext) 
         {
             _dbContext = dbContext;
             CategoryRepository = new CategoryRepository(_dbContext);
+            ProductRepository = new ProductRepositiory(_dbContext);
         }
         public async Task<int> SaveChangesAsync()
         {

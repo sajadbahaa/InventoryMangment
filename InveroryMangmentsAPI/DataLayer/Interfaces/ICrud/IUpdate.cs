@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataLayer.Interfaces.IRepository
+namespace DataLayer.Interfaces.ICrud
 {
-    public interface IAdd<T> where T:class
+    public interface IUpdate<T> where T : class
     {
-       void Add(T entity);
+        public void Update(T entity);
     }
 }

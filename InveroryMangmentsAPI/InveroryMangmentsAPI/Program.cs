@@ -1,4 +1,5 @@
 using BussinesLayer.Services.ServicesRegister;
+using DataLayer.Interfaces.IUnit;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using InveroryMangmentsAPI.Middlewhere;
@@ -17,7 +18,7 @@ var builder = WebApplication.CreateBuilder(args);
         ));
 
 // add unit of work
-builder.Services.AddScoped<DataLayer.Interfaces.IUnitOfWork, DataLayer.UnitOfWork.UnitofWork>();
+builder.Services.AddScoped<IUnitOfWork, DataLayer.UnitOfWork.UnitofWork>();
 
 
 // add Validation 

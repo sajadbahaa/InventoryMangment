@@ -29,7 +29,7 @@ namespace InveroryMangmentsAPI.Middlewhere
             context.Response.ContentType = "application/json";
 
             int statusCode = ex is AppException appException?appException.StatusCode: (int)HttpStatusCode.InternalServerError;
-            ApiResponse response = ApiResponse.Fail(ex.Message, statusCode);
+            ErrorApiResponse response = ErrorApiResponse.Fail(ex.Message, statusCode);
             context.Response.StatusCode = statusCode;
             await context.Response.WriteAsync(JsonSerializer.Serialize(response));
         }

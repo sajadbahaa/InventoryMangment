@@ -10,9 +10,9 @@ namespace InveroryMangmentsAPI.Validators.ValidationEntities.CategoryValidation
         public categoryV()
         {
                  RuleFor(item => item.Name)
-                .RequiredString()
+                .RequiredStringValidate()
                 .MaxLength(70)
-                .MinLength(6);  
+                .MinLength(3);  
         }
     }
 
@@ -22,10 +22,9 @@ namespace InveroryMangmentsAPI.Validators.ValidationEntities.CategoryValidation
         {
             RuleFor(item => item.Id).ValidId();
             RuleFor(item => item.Name)
-                            .RequiredString()
+                            .RequiredStringValidate()
                             .MaxLength(70)
-                            .MinLength(6);
-
+                            .MinLength(3);
         }
     }
 

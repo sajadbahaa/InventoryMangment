@@ -16,8 +16,7 @@ namespace InveroryMangmentsAPI.Validators.common
     {
         public commonVString()
         {
-            RuleFor(item => item.Value).RequiredString().MinLength(6).MaxLength(70);
-
+            RuleFor(item => item.Value).RequiredStringValidate().MinLength(3).MaxLength(70);
         }
     }
 }

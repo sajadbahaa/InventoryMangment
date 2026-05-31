@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataLayer.Interfaces.IRepository
+namespace DataLayer.Interfaces.ICrud
 {
     public  interface IDeleteExtension<Tkey> where Tkey : struct
     {
